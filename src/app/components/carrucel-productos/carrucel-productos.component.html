@@ -1,0 +1,23 @@
+<ion-card class="ion-text-center" *ngFor="let producto of productosPrecargados">
+  <img [src]="producto.image"/>
+  <ion-card-header>
+    <ion-card-title>{{ producto.title }}</ion-card-title>
+    <ion-card-subtitle>{{ producto.category }}</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    <strong>{{ producto.price }}</strong>
+    <br>
+    {{ producto.description }}
+    <div>
+      <ion-button id="confirmate-alert" (click)="agregarCarrito(producto)">Comprar</ion-button>
+    </div>
+  </ion-card-content>
+</ion-card>
+
+<ion-alert
+  trigger="confirmate-alert"
+  header="Agregado"
+  message="Producto agregado en el carrito"
+  [buttons]="alertButtons"
+></ion-alert>

@@ -1,0 +1,37 @@
+<ion-grid *ngIf="productoDesdeCarrito.length > 0; else SinProductos">
+  <ion-row *ngFor="let producto of productoDesdeCarrito">
+    <ion-col class="ion-text-center">
+      <img [src]="producto.image" style="border-radius: 15px;" />
+    </ion-col>
+    <ion-col>
+      <ion-card class="ion-text-center">
+        <ion-card-header>
+          <ion-card-title>{{producto.title}}</ion-card-title>
+          <ion-card-subtitle>{{ producto.category }}</ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+          {{producto.price}}
+          <ion-grid>
+            <ion-row>
+              <ion-col *ngIf="producto.seleccionado == true">
+                <ion-button id="eliminate-alert" (click)="eliminarDeCarrito(producto)">Eliminar</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-alert
+  trigger="eliminate-alert"
+  header="Eliminar"
+  message="Se borraran todos los productos que has indicado"
+  [buttons]="alertButtons"
+></ion-alert>
+
+<ng-template #SinProductos>
+  <h3>No tienes productos agreados en el carrito</h3>
+</ng-template>
