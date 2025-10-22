@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>formulario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">formulario</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <main>
+    <form [formGroup]="formularioRegistro" (ngSubmit)="guardar()">
+      <ion-input type="text" formControlName="primerNombre" label="Primer nombre"></ion-input>
+      <label style="color: red;" *ngIf="this.formularioRegistro.get('primerNombre')?.touched && this.formularioRegistro.get('primerNombre')?.invalid">
+        Nombre incorrecto
+      </label>
+      <ion-input type="text" formControlName="segundoNombre" label="Segundo nombre"></ion-input>
+      <label style="color: red;" *ngIf="this.formularioRegistro.get('segundoNombre')?.invalid">
+        Segundo nombre incorrecto
+      </label>
+      <ion-input type="text" formControlName="primerApellido" label="Primer apellido"></ion-input>
+      <label style="color: red;" *ngIf="this.formularioRegistro.get('primerApellido')?.touched && this.formularioRegistro.get('primerApellido')?.invalid">
+        Apellido incorrecto
+      </label>
+      <ion-input type="text" formControlName="segundoApellido" label="Segundo apellido"></ion-input>
+      <label style="color: red;" *ngIf="this.formularioRegistro.get('segundoApellido')?.invalid">
+        Segundo apellido incorrecto
+      </label>
+      <ion-input type="number" formControlName="edad" label="Edad"></ion-input>
+      <label style="color: red;" *ngIf="this.formularioRegistro.get('edad')?.invalid">
+        Eres menor de edad
+      </label>
+      <select formControlName="ciudad">
+        <option [value]="ciudad" *ngFor="let ciudad of ciudades; let i=index" 
+        >{{ciudad}}</option>
+      </select>
+      <br>
+      <br>
+      <ion-checkbox slot="start" formControlName="terminos">Terminos y condiciones</ion-checkbox>
+      <label style="color: red;" *ngIf="this.formularioRegistro.get('terminos')?.invalid && this.formularioRegistro.get('terminos')?.touched">Necesitas confirmar tratamiento</label>
+      <ion-button type="submit">Guardar</ion-button>
+    </form>
+  </main>
+</ion-content>

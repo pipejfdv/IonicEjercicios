@@ -15,6 +15,7 @@ export class AppComponent {
   public appPages = [
     { title: 'Producto', url: '/vitrina', icon: 'archive' },
     { title: 'Carrito', url: 'carrito', icon: 'paper-plane' },
+    { title: 'Formulario', url: '/formulario', icon: 'heart' },
     /*{ title: 'Inbox', url: '/folder/inbox', icon: 'mail' },
     { title: 'Favorites', url: '/folder/favorites', icon: 'heart' },
     { title: 'Trash', url: '/folder/trash', icon: 'trash' },
